@@ -15,16 +15,15 @@ XOR   = bin(6,3);
 %Line numbers chosen big enough to be out of the way.
 
 ONE = 100;
-DECR = 102; 
-N = 103; % number of integers in the list
-i = 104; % index counter 
-j = 105; % another index counter
-A = 106; % one of the integers we are working with
-B = 107; % another one of the integers
-ptSTART = 108; % this contains the line number of START
-TARGET = 109; % the target value
-% LOC = 110;
-LOADVAL = 111;
+DECR = 101; 
+N = 102; % number of integers in the list
+i = 103; % index counter 
+j = 104; % another index counter
+A = 105; % one of the integers we are working with
+B = 106; % another one of the integers
+ptSTART = 107; % this contains the line number of START
+TARGET = 108; % the target value
+LOADVAL = 109;
 START = 200; % where the list of integers starts
 
 % These are variables that hold the line numbers of key sections outlined
@@ -64,6 +63,11 @@ mem(1+20,:) = [BNZ, bin(CHECK1,13)];
 
 mem(1+END,:) = [LOAD, bin(ONE,13)];
 mem(1+22,:) = [BNZ, bin(ZERO,13)];
+
+mem(1+CHECK1,:) = [LOAD, bin(i,13)];
+mem(1+24,:) = [ADD, bin(DECR,13)];
+mem(1+25,:) = [STORE, bin(j,13)];
+mem(1+26,:) = [BNZ, bin(CHECK,13)]; % j != 0
 
 
 
