@@ -36,6 +36,7 @@ LOC1 = 10;
 LOC2 = 16;
 END = 21;
 CHECK1 = 23;
+DECRALL = 27;
 
 mem(1+INITIAL,:) = [LOAD, bin(N,13)];
 mem(1+2,:) = [STORE, bin(i,13)];
@@ -64,12 +65,18 @@ mem(1+20,:) = [BNZ, bin(CHECK1,13)];
 mem(1+END,:) = [LOAD, bin(ONE,13)];
 mem(1+22,:) = [BNZ, bin(ZERO,13)];
 
-mem(1+CHECK1,:) = [LOAD, bin(i,13)];
+mem(1+CHECK1,:) = [LOAD, bin(j,13)];
 mem(1+24,:) = [ADD, bin(DECR,13)];
 mem(1+25,:) = [STORE, bin(j,13)];
 mem(1+26,:) = [BNZ, bin(CHECK,13)]; % j != 0
 
-
+%decrall 
+mem(1+DECRALL,:) = [LOAD, bin(i,13)];
+mem(1+28,:) = [ADD, bin(DECR,13)];
+mem(1+29,:) = [STORE, bin(i,13)];
+mem(1+30,:) = [ADD, bin(DECR,13)];
+mem(1+31,:) = [STORE, bin(j,13)];
+mem(1+32,:) = [BNZ, bin(CHECK,13)];
 
 
 mem(1+ONE,:) = bin(1,16);
